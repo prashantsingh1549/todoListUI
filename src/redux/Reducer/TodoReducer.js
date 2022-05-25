@@ -4,27 +4,28 @@ const initialState = {
 };
 
 const TodoReducer = (state = initialState, action) => {
+  console.log(action);
   switch (action.type) {
     case ADD_TODO:
       return {
         ...state,
-        todoList: todoList.concat(action.body.data),
+        todoList: action.body,
       };
     case EDIT_TODO:
       return {
         ...state,
-        todoList: action.body.data,
+        todoList: action.body,
       };
 
     case DELETE_TODO:
       return {
         ...state,
-        todoList: action.body.data,
+        todoList: state.todoList.filter(item => item.id != action.body.id),
       };
     case ALL_TODO:
       return {
         ...state,
-        todoList: action.body.data,
+        todoList: action.body,
       };
 
     default:
